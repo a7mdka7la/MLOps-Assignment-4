@@ -2,6 +2,7 @@ import torch
 import torch.nn as nn
 import os
 
+
 # Define a simple linear model
 class SimpleLinearRegression(nn.Module):
     def __init__(self):
@@ -10,6 +11,7 @@ class SimpleLinearRegression(nn.Module):
 
     def forward(self, x):
         return self.linear(x)
+
 
 def main():
     print("Initializing training...")
@@ -30,7 +32,7 @@ def main():
         loss = criterion(outputs, y_train)
         loss.backward()
         optimizer.step()
-        
+
         if (epoch + 1) % 20 == 0:
             print(f'Epoch [{epoch + 1}/{epochs}], Loss: {loss.item():.4f}')
 
@@ -39,6 +41,7 @@ def main():
     model_path = 'models/simple_model.pth'
     torch.save(model.state_dict(), model_path)
     print(f"Training complete. Model saved to {model_path}")
+
 
 if __name__ == '__main__':
     main()
