@@ -23,11 +23,11 @@ jobs:
         run: pip install -r requirements.txt
 
       - name: Linter Check
-        run: print('No Linter Errors')
+        run: flake8 .
 
       - name: Model Dry Test
         run: |
-          python -c " `print('Model environment ready!')"
+          python -c "import torch; print('Model environment ready!')"
 
       - name: Upload Project Doc
         uses: actions/upload-artifact@v4
